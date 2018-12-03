@@ -852,6 +852,7 @@ void kexInputSDL::PollInput(void)
 
     ReadMouse();
     ReadJoystick();
+    UpdateGrab();
 }
 
 //
@@ -875,7 +876,6 @@ bool kexInputSDL::MouseShouldBeGrabbed(void) const
 
 void kexInputSDL::ActivateMouse(void)
 {
-    SDL_ShowCursor(0);
     SDL_SetRelativeMouseMode(SDL_TRUE);
     kex::cSystem->SetWindowGrab(SDL_TRUE);
 }
@@ -886,7 +886,6 @@ void kexInputSDL::ActivateMouse(void)
 
 void kexInputSDL::DeactivateMouse(void)
 {
-    SDL_ShowCursor(1);
     SDL_SetRelativeMouseMode(SDL_FALSE);
     kex::cSystem->SetWindowGrab(SDL_FALSE);
 }
